@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foka_mobile_app/components/rounded_button.dart';
 import 'package:foka_mobile_app/screens/login_screen.dart';
-import 'package:foka_mobile_app/screens/welcome_screen.dart';
+import 'package:foka_mobile_app/screens/home_screen.dart';
 
 class LicenseAgreement extends StatefulWidget {
 

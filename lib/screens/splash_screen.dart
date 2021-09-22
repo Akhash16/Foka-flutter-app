@@ -4,7 +4,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foka_mobile_app/screens/login_screen.dart';
-import 'package:foka_mobile_app/screens/welcome_screen.dart';
+import 'package:foka_mobile_app/screens/home_screen.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
 

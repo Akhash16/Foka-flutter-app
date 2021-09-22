@@ -12,81 +12,162 @@ class THSMonitor extends StatefulWidget {
 }
 
 class _THSMonitorState extends State<THSMonitor> {
+  late double temperature = 25.0;
+  bool isSwitched = false;
+  String textValue = 'Off';
+  late int humidity = 20;
+
+  void toggleSwitch(bool value){
+    setState(() {
+      isSwitched = !isSwitched;
+      textValue = (textValue=='Off') ? 'On' : 'Off';
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF6F6C1),
-      body: SafeArea(
-        child: Container(
-          width: double.infinity,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              DottedBorder(
-                borderType: BorderType.Circle,
-                strokeWidth: 5,
-                dashPattern: [20, 10],
-                padding: EdgeInsets.all(10),
-                color: Colors.black,
-                child: CircleAvatar(
-                  radius: 100.0,
-                  backgroundColor: Color(0xFF25343D),
-                  child: CircleAvatar(
-                    radius: 80.0,
-                    backgroundColor: Color(0xFF57911E),
-                    child: Text(
-                      '54%',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 50.0,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Text(
-                'Estimate max standby',
-                style: TextStyle(
-                  fontSize: 28.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Row(
+      backgroundColor: Color(0xFFFDFFD1),
+      
+      appBar:  PreferredSize(
+        preferredSize: Size.fromHeight(10.0),
+        child: AppBar (
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(50.0)
+          )
+          // shape: BeveledRectangleBorder(
+          //     borderRadius: BorderRadius.circular(20)
+          // ),
+        ),
+      ),
+      body: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Center(
+              child: Column(
                 children: [
                   Text(
-                    '1',
+                    'Temperature',
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 28.0,
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.w800,
+                      fontFamily: 'Poppins',
                     ),
                   ),
-                  Text(
-                    'd',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 18.0,
-                    ),
+                  SizedBox(
+                    height: 15.0,
                   ),
-                  Text(
-                    '20',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 28.0,
-                    ),
-                  ),
-                  Text(
-                    'h',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 18.0,
+                  DottedBorder(
+                    color: Colors.lightBlueAccent,
+                    borderType: BorderType.Circle,
+                    strokeWidth: 5,
+                    dashPattern: [20, 10],
+                    padding: EdgeInsets.all(10),
+                    child: CircleAvatar(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            temperature.toString(),
+                            style: TextStyle(
+                              fontSize: 40.0,
+                              fontWeight: FontWeight.w900,
+                              fontFamily: 'Poppins',
+                              color: Colors.black,
+                            ),
+                          ),
+                          Text(
+                            '°C',
+                            style: TextStyle(
+                              fontSize: 30.0,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: 'Poppins',
+                              color: Colors.black54,
+                            ),
+                          ),
+                        ],
+                      ),
+                      radius: 100.0,
+                      backgroundColor: Color(0xFFFDFFD1),
                     ),
                   ),
                 ],
               ),
-            ],
-          ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Text(
+                        humidity.toString() + '%',
+                        style: TextStyle(
+                          fontSize: 25.0,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      Image.asset(
+                        'images/humidity.png',
+                        height: 100.0,
+                        width: 100.0,
+                      ),
+                      Text(
+                        'Humidity',
+                        style: TextStyle(
+                          fontFamily: 'Poppins',
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Switch(
+                        inactiveThumbColor: Colors.red,
+                          inactiveTrackColor: Colors.redAccent[100],
+                          activeColor: Colors.green,
+                          activeTrackColor: Colors.greenAccent[400],
+                          value: isSwitched,
+                          onChanged: toggleSwitch,
+                      ),
+                      Image.asset(
+                          'images/smoke.png',
+                        height: 100.0,
+                        width: 100.0,
+                      ),
+                      Text(
+                        'Smoke Detection',
+                        style: TextStyle(
+                          fontFamily: 'Poppins',
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.black,
+                        ),
+                      ),
+                      Text(
+                        textValue,
+                        style: TextStyle(
+                          fontFamily: 'Poppins',
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            )
+          ],
         ),
       ),
     );

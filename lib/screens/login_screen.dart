@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foka_mobile_app/screens/registration_screen.dart';
 import 'package:foka_mobile_app/screens/splash_screen.dart';
-import 'package:foka_mobile_app/screens/welcome_screen.dart';
+import 'package:foka_mobile_app/screens/home_screen.dart';
 import 'package:foka_mobile_app/components/rounded_button.dart';
 import 'package:foka_mobile_app/components/error_alert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -201,7 +201,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             email: email.trim(), password: password);
                         print(newUser);
                         if (newUser != null) {
-                          Navigator.popAndPushNamed(context, WelcomeScreen.id);
+                          Navigator.popAndPushNamed(context, HomeScreen.id);
                         }
                       } on FirebaseAuthException catch (e) {
                         print(e.message);
