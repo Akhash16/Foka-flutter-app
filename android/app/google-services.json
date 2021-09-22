@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "380448092691",
+    "project_id": "foka-app",
+    "storage_bucket": "foka-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:380448092691:android:1b8f9af4bd53da60ea05e6",
+        "android_client_info": {
+          "package_name": "com.boundlessbloggers.foka_mobile_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "380448092691-5a69gbsm0iu19jcqtgnm2lvr0hkc2hhg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAF70dkO4YBHdPgse2tHYx4RNEAWicHI98"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "380448092691-5a69gbsm0iu19jcqtgnm2lvr0hkc2hhg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
