@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fokaapp/devicewidget.dart';
+import 'package:foka_mobile_app/components/devicewidget.dart';
 
 class DevicesPageWidget extends StatefulWidget {
   
