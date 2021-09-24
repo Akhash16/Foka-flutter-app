@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'components/roundedbutton.dart';
+import 'package:foka_mobile_app/components/rounded_button.dart';
 
 class ChangePasswordWidget extends StatefulWidget {
   
