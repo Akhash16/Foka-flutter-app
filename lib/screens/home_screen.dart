@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'package:foka_mobile_app/components/boat_widgets.dart';
 import 'package:foka_mobile_app/components/rounded_button.dart';
 import 'package:flutter/cupertino.dart';

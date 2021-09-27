@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'components/rectbutton.dart';
+import 'package:foka_mobile_app/components/rectbutton.dart';
 class RealProfilepageWidget extends StatefulWidget {
   
   @override
