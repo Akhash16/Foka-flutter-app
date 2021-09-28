@@ -31,8 +31,8 @@ dependencies:
   dotted_border:
   animated_text_kit: ^4.2.1
   google_fonts: ^2.1.0
-  firebase_auth: ^3.1.1
-  firebase_core: ^1.6.0
+  firebase_auth: 
+  firebase_core: 
   font_awesome_flutter: ^9.1.0
   step_progress_indicator: ^1.0.1
 
