@@ -12,6 +12,7 @@ class THSMonitor extends StatefulWidget {
 }
 
 class _THSMonitorState extends State<THSMonitor> {
+  int currentValue = 0;
   late double temperature = 25.0;
   bool isSwitched = false;
   String textValue = 'Off';
@@ -27,6 +28,40 @@ class _THSMonitorState extends State<THSMonitor> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+      backgroundColor: Colors.white,
+      selectedItemColor: Colors.blue,
+      unselectedItemColor: Colors.grey,
+      selectedFontSize: 14,
+      unselectedFontSize: 14,
+      currentIndex: currentValue,
+      onTap: (index) {
+      setState(() {
+        currentValue = index;
+      });
+     
+      },
+      
+      items: [
+      BottomNavigationBarItem(
+        label: 'Home',
+        icon: Icon(Icons.home),
+      ),
+      BottomNavigationBarItem(
+        label: 'Profile',
+        icon: Icon(Icons.person),
+      ),
+      BottomNavigationBarItem(
+        label: 'Settings',
+        icon: Icon(Icons.settings),
+      ),
+      BottomNavigationBarItem(
+        label: 'Log out',
+        icon: Icon(Icons.logout),
+      ),
+      ],
+    ),
       backgroundColor: Color(0xFFFDFFD1),
       
       appBar:  PreferredSize(
