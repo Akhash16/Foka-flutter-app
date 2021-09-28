@@ -34,6 +34,7 @@ dependencies:
   firebase_auth: 
   firebase_core: 
   font_awesome_flutter: ^9.1.0
+  step_progress_indicator: ^1.0.1
 
 
 

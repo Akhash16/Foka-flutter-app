@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:foka_mobile_app/components/navbar.dart';
 import 'package:foka_mobile_app/screens/battery_monitor.dart';
+import 'package:foka_mobile_app/screens/fluid_monitor.dart';
+import 'package:foka_mobile_app/screens/license_agreement.dart';
+import 'package:foka_mobile_app/screens/security_monitor.dart';
+import 'package:foka_mobile_app/screens/setting_changed_successfully.dart';
 import 'package:foka_mobile_app/screens/devices_screen.dart';
 import 'package:foka_mobile_app/screens/license_agreement.dart';
 import 'package:foka_mobile_app/screens/profile_page.dart';
@@ -28,6 +32,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+
+      // initialRoute: WelcomeScreen.id
       initialRoute: HomeScreen.id,
       routes: {
         settingsPage.id: (context) => settingsPage(),
@@ -39,6 +45,10 @@ class MyApp extends StatelessWidget {
         THSMonitor.id: (context) => THSMonitor(),
         LicenseAgreement.id: (context) => LicenseAgreement(),
         BatteryMonitor.id: (context) => BatteryMonitor(),
+
+        SecurityMonitor.id: (context) => SecurityMonitor(),
+        FluidMonitor.id: (context) => FluidMonitor(),
+        SettingsSavedSuccessfully.id: (context) => SettingsSavedSuccessfully(),
       },
     );
   }
