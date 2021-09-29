@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:foka_mobile_app/components/navbar.dart';
 import 'package:foka_mobile_app/screens/battery_monitor.dart';
+import 'package:foka_mobile_app/screens/change_password.dart';
 import 'package:foka_mobile_app/screens/fluid_monitor.dart';
 import 'package:foka_mobile_app/screens/license_agreement.dart';
+import 'package:foka_mobile_app/screens/locationtracker_screen.dart';
 import 'package:foka_mobile_app/screens/security_monitor.dart';
 import 'package:foka_mobile_app/screens/setting_changed_successfully.dart';
 import 'package:foka_mobile_app/screens/devices_screen.dart';
@@ -34,7 +36,7 @@ class MyApp extends StatelessWidget {
       ),
 
       // initialRoute: WelcomeScreen.id
-      initialRoute: HomeScreen.id,
+      initialRoute: ChangePasswordWidget.id,
       routes: {
         settingsPage.id: (context) => settingsPage(),
         RealProfilepageWidget.id: (context) => RealProfilepageWidget(),
@@ -45,10 +47,12 @@ class MyApp extends StatelessWidget {
         THSMonitor.id: (context) => THSMonitor(),
         LicenseAgreement.id: (context) => LicenseAgreement(),
         BatteryMonitor.id: (context) => BatteryMonitor(),
-
+        ChangePasswordWidget.id : (context) => ChangePasswordWidget(),
         SecurityMonitor.id: (context) => SecurityMonitor(),
         FluidMonitor.id: (context) => FluidMonitor(),
         SettingsSavedSuccessfully.id: (context) => SettingsSavedSuccessfully(),
+        DevicesPageWidget.id: (context) => DevicesPageWidget(),
+        locationTracker.id: (context) => locationTracker()
       },
     );
   }

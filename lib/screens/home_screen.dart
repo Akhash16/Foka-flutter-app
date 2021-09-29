@@ -3,6 +3,7 @@ import 'package:foka_mobile_app/components/navbar.dart';
 import 'package:foka_mobile_app/components/rounded_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:foka_mobile_app/screens/devices_screen.dart';
 import 'package:foka_mobile_app/screens/profile_page.dart';
 import 'package:foka_mobile_app/screens/settings_screen.dart';
 import 'package:foka_mobile_app/screens/splash_screen.dart';
@@ -103,11 +104,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ],
                 ),
-                BoatWidget('Boat 1', 30.0, 30),
-                BoatWidget('Boat 1', 30.0, 30),
-                BoatWidget('Boat 1', 30.0, 30),
-                BoatWidget('Boat 1', 30.0, 30),
-                BoatWidget('Boat 1', 30.0, 30),
+                BoatWidget('Boat 1', 30.0, 30,(){Navigator.pushNamed(context, DevicesPageWidget.id);}),
+                BoatWidget('Boat 1', 30.0, 30,(){Navigator.pushNamed(context, DevicesPageWidget.id);}),
+                BoatWidget('Boat 1', 30.0, 30,(){Navigator.pushNamed(context, DevicesPageWidget.id);}),
+                BoatWidget('Boat 1', 30.0, 30,(){Navigator.pushNamed(context, DevicesPageWidget.id);}),
+                BoatWidget('Boat 1', 30.0, 30,(){Navigator.pushNamed(context, DevicesPageWidget.id);}),
               ],
             ),
           ),

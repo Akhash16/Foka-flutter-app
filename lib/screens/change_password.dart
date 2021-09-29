@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:foka_mobile_app/components/rounded_button.dart';
+import 'package:foka_mobile_app/screens/profile_page.dart';
+import 'package:foka_mobile_app/screens/settings_screen.dart';
+import 'package:foka_mobile_app/screens/splash_screen.dart';
+
+import 'home_screen.dart';
 
 class ChangePasswordWidget extends StatefulWidget {
   
-
+static const String id = 'change_password';
   @override
   _ChangePasswordWidgetState createState() => _ChangePasswordWidgetState();
 }
 
 class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
+  final screens = [
+    HomeScreen.id,
+    RealProfilepageWidget.id,
+    settingsPage.id,
+    SplashScreen.id
+  ];
   late TextEditingController textController1;
   late bool passwordVisibility1;
   late TextEditingController textController2;
@@ -27,6 +38,41 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar:BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+      backgroundColor: Colors.white,
+      selectedItemColor: Colors.grey,
+      unselectedItemColor: Colors.grey,
+      selectedFontSize: 14,
+      unselectedFontSize: 14,
+      // currentIndex: currentValue,
+      onTap: (index) {
+      // setState(() {
+      //   currentValue = index;
+      // });
+      Navigator.pushNamed(context,screens[index]);
+      },
+      
+      items: [
+      BottomNavigationBarItem(
+        label: 'Home',
+        icon: Icon(Icons.home),
+      ),
+      BottomNavigationBarItem(
+        label: 'Profile',
+        icon: Icon(Icons.person),
+      ),
+      BottomNavigationBarItem(
+        label: 'Settings',
+        icon: Icon(Icons.settings),
+      ),
+      BottomNavigationBarItem(
+        label: 'Log out',
+        icon: Icon(Icons.logout),
+      ),
+      ],
+    
+    ),
       key: scaffoldKey,
       body: Container(
         width: double.infinity,
@@ -35,10 +81,10 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
           color: Color(0xFFFDFFD1),
         ),
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(20, 150, 20, 280),
+          padding: EdgeInsetsDirectional.fromSTEB(20, 80, 20, 310),
           child: Container(
-            width: 352,
-            height: 342,
+            
+            
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(20),
@@ -46,7 +92,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(1, 0, 0, 0),
               child: Column(
-                mainAxisSize: MainAxisSize.max,
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Align(
                     alignment: AlignmentDirectional(-0.8, 0),
@@ -88,7 +134,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: Colors.black,
-                            width: 0.3,
+                            width: 0.7,
                           ),
                           borderRadius: BorderRadius.circular(30),
                         ),
@@ -145,7 +191,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: Colors.black,
-                            width: 0.3,
+                            width: 0.7,
                           ),
                           borderRadius: BorderRadius.circular(30),
                         ),
@@ -179,13 +225,13 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                   ),
                   Expanded(
                     child: Align(
-                      alignment: AlignmentDirectional(-0.05, 0.05),
+                      alignment: AlignmentDirectional(0, 0),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                        child: RoundedButton(color: Colors.blue ,title: "Save Changes" ,onPressed: (){},)
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                        child: RoundedButton(color: Colors.blue ,title: "Save Changes" ,onPressed: (){ Navigator.pushNamed(context, RealProfilepageWidget.id); },)
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

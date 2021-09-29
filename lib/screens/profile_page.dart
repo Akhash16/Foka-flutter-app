@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foka_mobile_app/components/rectbutton.dart';
+import 'package:foka_mobile_app/screens/change_password.dart';
+import 'package:foka_mobile_app/screens/setting_changed_successfully.dart';
 import 'package:foka_mobile_app/screens/settings_screen.dart';
 import 'package:foka_mobile_app/screens/splash_screen.dart';
 import 'package:foka_mobile_app/screens/ths_monitor_screen.dart';
@@ -262,14 +264,14 @@ class _RealProfilepageWidgetState extends State<RealProfilepageWidget> {
                 alignment: AlignmentDirectional(0, 0.05),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 100, 0, 0),
-                  child: RectButton(color: Color(0xFF39d2c0),title: 'Change Password',onPressed: (){})
+                  child: RectButton(color: Color(0xFF39d2c0),title: 'Change Password',onPressed: (){Navigator.pushNamed(context, ChangePasswordWidget.id);})
                 ),
               ),
               Align(
                 alignment: AlignmentDirectional(0, 0.05),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
-                  child: RectButton(color: Color(0xFF39d2c0),title: 'Save Changes',onPressed: (){})
+                  child: RectButton(color: Color(0xFF39d2c0),title: 'Save Changes',onPressed: (){Navigator.pushNamed(context, SettingsSavedSuccessfully.id);})
                 ),
               )
             ],

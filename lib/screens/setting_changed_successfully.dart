@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:foka_mobile_app/screens/profile_page.dart';
+import 'package:foka_mobile_app/screens/settings_screen.dart';
+import 'package:foka_mobile_app/screens/splash_screen.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
+
+import 'home_screen.dart';
 
 class SettingsSavedSuccessfully extends StatefulWidget {
   // const SettingsSavedSuccessfully({Key key}) : super(key: key);
@@ -12,9 +17,52 @@ class SettingsSavedSuccessfully extends StatefulWidget {
 }
 
 class _SettingsSavedSuccessfullyState extends State<SettingsSavedSuccessfully> {
+
+  final screens = [
+    HomeScreen.id,
+    RealProfilepageWidget.id,
+    settingsPage.id,
+    SplashScreen.id
+  ];
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+      backgroundColor: Colors.white,
+      selectedItemColor: Colors.grey,
+      unselectedItemColor: Colors.grey,
+      selectedFontSize: 14,
+      unselectedFontSize: 14,
+      // currentIndex: currentValue,
+      onTap: (index) {
+      // setState(() {
+      //   currentValue = index;
+      // });
+      Navigator.pushNamed(context,screens[index]);
+      },
+      
+      items: [
+      BottomNavigationBarItem(
+        label: 'Home',
+        icon: Icon(Icons.home),
+      ),
+      BottomNavigationBarItem(
+        label: 'Profile',
+        icon: Icon(Icons.person),
+      ),
+      BottomNavigationBarItem(
+        label: 'Settings',
+        icon: Icon(Icons.settings),
+      ),
+      BottomNavigationBarItem(
+        label: 'Log out',
+        icon: Icon(Icons.logout),
+      ),
+      ],
+    
+    ),
         appBar: AppBar(
           title: Text(
             'Fluid Monitor',

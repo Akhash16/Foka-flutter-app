@@ -1,6 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:foka_mobile_app/screens/profile_page.dart';
+import 'package:foka_mobile_app/screens/settings_screen.dart';
+import 'package:foka_mobile_app/screens/splash_screen.dart';
+
+import 'home_screen.dart';
 
 class SecurityMonitor extends StatefulWidget {
   // const SecurityMonitor({Key key}) : super(key: key);
@@ -12,6 +17,12 @@ class SecurityMonitor extends StatefulWidget {
 }
 
 class _SecurityMonitorState extends State<SecurityMonitor> {
+  final screens = [
+    HomeScreen.id,
+    RealProfilepageWidget.id,
+    settingsPage.id,
+    SplashScreen.id
+  ];
 
   bool isSwitched = false;
 
@@ -24,6 +35,41 @@ class _SecurityMonitorState extends State<SecurityMonitor> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+      backgroundColor: Colors.white,
+      selectedItemColor: Colors.grey,
+      unselectedItemColor: Colors.grey,
+      selectedFontSize: 14,
+      unselectedFontSize: 14,
+      // currentIndex: currentValue,
+      onTap: (index) {
+      // setState(() {
+      //   currentValue = index;
+      // });
+      Navigator.pushNamed(context,screens[index]);
+      },
+      
+      items: [
+      BottomNavigationBarItem(
+        label: 'Home',
+        icon: Icon(Icons.home),
+      ),
+      BottomNavigationBarItem(
+        label: 'Profile',
+        icon: Icon(Icons.person),
+      ),
+      BottomNavigationBarItem(
+        label: 'Settings',
+        icon: Icon(Icons.settings),
+      ),
+      BottomNavigationBarItem(
+        label: 'Log out',
+        icon: Icon(Icons.logout),
+      ),
+      ],
+    
+    ),
       backgroundColor: Color(0xFFF6F6C1),
       body: Padding(
         padding: const EdgeInsets.all(18.0),

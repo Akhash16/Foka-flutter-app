@@ -1,6 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:foka_mobile_app/screens/profile_page.dart';
+import 'package:foka_mobile_app/screens/settings_screen.dart';
+import 'package:foka_mobile_app/screens/splash_screen.dart';
+
+import 'home_screen.dart';
 
 class THSMonitor extends StatefulWidget {
   // const THSMonitor({Key key}) : super(key: key);
@@ -12,6 +17,12 @@ class THSMonitor extends StatefulWidget {
 }
 
 class _THSMonitorState extends State<THSMonitor> {
+  final screens = [
+    HomeScreen.id,
+    RealProfilepageWidget.id,
+    settingsPage.id,
+    SplashScreen.id
+  ];
   int currentValue = 0;
   late double temperature = 25.0;
   bool isSwitched = false;
@@ -31,16 +42,16 @@ class _THSMonitorState extends State<THSMonitor> {
       bottomNavigationBar: BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
       backgroundColor: Colors.white,
-      selectedItemColor: Colors.blue,
+      selectedItemColor: Colors.grey,
       unselectedItemColor: Colors.grey,
       selectedFontSize: 14,
       unselectedFontSize: 14,
-      currentIndex: currentValue,
+      // currentIndex: currentValue,
       onTap: (index) {
-      setState(() {
-        currentValue = index;
-      });
-     
+      // setState(() {
+      //   currentValue = index;
+      // });
+      Navigator.pushNamed(context,screens[index]);
       },
       
       items: [
@@ -61,7 +72,9 @@ class _THSMonitorState extends State<THSMonitor> {
         icon: Icon(Icons.logout),
       ),
       ],
+    
     ),
+      
       backgroundColor: Color(0xFFFDFFD1),
       
       appBar:  PreferredSize(
