@@ -6,9 +6,8 @@ import 'package:foka_mobile_app/screens/splash_screen.dart';
 import 'home_screen.dart';
 
 class locationTracker extends StatefulWidget {
-
   static const String id = 'locationtracker_screen.dart';
-  const locationTracker({ Key? key }) : super(key: key);
+  const locationTracker({Key? key}) : super(key: key);
 
   @override
   _locationTrackerState createState() => _locationTrackerState();
@@ -21,49 +20,53 @@ class _locationTrackerState extends State<locationTracker> {
     settingsPage.id,
     SplashScreen.id
   ];
-  
+
   @override
   Widget build(BuildContext context) {
-   
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      backgroundColor: Colors.white,
-      selectedItemColor: Colors.grey,
-      unselectedItemColor: Colors.grey,
-      selectedFontSize: 14,
-      unselectedFontSize: 14,
-      // currentIndex: currentValue,
-      onTap: (index) {
-      // setState(() {
-      //   currentValue = index;
-      // });
-      Navigator.pushNamed(context,screens[index]);
-      },
-      
-      items: [
-      BottomNavigationBarItem(
-        label: 'Home',
-        icon: Icon(Icons.home),
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.white,
+        selectedItemColor: Colors.grey,
+        unselectedItemColor: Colors.grey,
+        selectedFontSize: 14,
+        unselectedFontSize: 14,
+        // currentIndex: currentValue,
+        onTap: (index) {
+          // setState(() {
+          //   currentValue = index;
+          // });
+          Navigator.pushNamed(context, screens[index]);
+        },
+
+        items: [
+          BottomNavigationBarItem(
+            label: 'Home',
+            icon: Icon(Icons.home),
+          ),
+          BottomNavigationBarItem(
+            label: 'Profile',
+            icon: Icon(Icons.person),
+          ),
+          BottomNavigationBarItem(
+            label: 'Settings',
+            icon: Icon(Icons.settings),
+          ),
+          BottomNavigationBarItem(
+            label: 'Log out',
+            icon: Icon(Icons.logout),
+          ),
+        ],
       ),
-      BottomNavigationBarItem(
-        label: 'Profile',
-        icon: Icon(Icons.person),
+      appBar: AppBar(
+        title: Text(
+          'Location Tracker',
+        ),
       ),
-      BottomNavigationBarItem(
-        label: 'Settings',
-        icon: Icon(Icons.settings),
-      ),
-      BottomNavigationBarItem(
-        label: 'Log out',
-        icon: Icon(Icons.logout),
-      ),
-      ],
-    
-    ),
-      appBar: AppBar(),
       body: Container(
-        child: Text('Google map'),
+        child: Text(
+          'Google map api problems to be resolved',
+        ),
       ),
     );
   }

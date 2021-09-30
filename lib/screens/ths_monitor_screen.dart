@@ -29,10 +29,10 @@ class _THSMonitorState extends State<THSMonitor> {
   String textValue = 'Off';
   late int humidity = 20;
 
-  void toggleSwitch(bool value){
+  void toggleSwitch(bool value) {
     setState(() {
       isSwitched = !isSwitched;
-      textValue = (textValue=='Off') ? 'On' : 'Off';
+      textValue = (textValue == 'Off') ? 'On' : 'Off';
     });
   }
 
@@ -40,52 +40,43 @@ class _THSMonitorState extends State<THSMonitor> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      backgroundColor: Colors.white,
-      selectedItemColor: Colors.grey,
-      unselectedItemColor: Colors.grey,
-      selectedFontSize: 14,
-      unselectedFontSize: 14,
-      // currentIndex: currentValue,
-      onTap: (index) {
-      // setState(() {
-      //   currentValue = index;
-      // });
-      Navigator.pushNamed(context,screens[index]);
-      },
-      
-      items: [
-      BottomNavigationBarItem(
-        label: 'Home',
-        icon: Icon(Icons.home),
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.white,
+        selectedItemColor: Colors.grey,
+        unselectedItemColor: Colors.grey,
+        selectedFontSize: 14,
+        unselectedFontSize: 14,
+        // currentIndex: currentValue,
+        onTap: (index) {
+          // setState(() {
+          //   currentValue = index;
+          // });
+          Navigator.pushNamed(context, screens[index]);
+        },
+
+        items: [
+          BottomNavigationBarItem(
+            label: 'Home',
+            icon: Icon(Icons.home),
+          ),
+          BottomNavigationBarItem(
+            label: 'Profile',
+            icon: Icon(Icons.person),
+          ),
+          BottomNavigationBarItem(
+            label: 'Settings',
+            icon: Icon(Icons.settings),
+          ),
+          BottomNavigationBarItem(
+            label: 'Log out',
+            icon: Icon(Icons.logout),
+          ),
+        ],
       ),
-      BottomNavigationBarItem(
-        label: 'Profile',
-        icon: Icon(Icons.person),
-      ),
-      BottomNavigationBarItem(
-        label: 'Settings',
-        icon: Icon(Icons.settings),
-      ),
-      BottomNavigationBarItem(
-        label: 'Log out',
-        icon: Icon(Icons.logout),
-      ),
-      ],
-    
-    ),
-      
       backgroundColor: Color(0xFFFDFFD1),
-      
-      appBar:  PreferredSize(
-        preferredSize: Size.fromHeight(10.0),
-        child: AppBar (
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50.0)
-          )
-          // shape: BeveledRectangleBorder(
-          //     borderRadius: BorderRadius.circular(20)
-          // ),
+      appBar: AppBar(
+        title: Text(
+          'THS Monitor',
         ),
       ),
       body: Container(
@@ -181,14 +172,14 @@ class _THSMonitorState extends State<THSMonitor> {
                     children: [
                       Switch(
                         inactiveThumbColor: Colors.red,
-                          inactiveTrackColor: Colors.redAccent[100],
-                          activeColor: Colors.green,
-                          activeTrackColor: Colors.greenAccent[400],
-                          value: isSwitched,
-                          onChanged: toggleSwitch,
+                        inactiveTrackColor: Colors.redAccent[100],
+                        activeColor: Colors.green,
+                        activeTrackColor: Colors.greenAccent[400],
+                        value: isSwitched,
+                        onChanged: toggleSwitch,
                       ),
                       Image.asset(
-                          'images/smoke.png',
+                        'images/smoke.png',
                         height: 100.0,
                         width: 100.0,
                       ),

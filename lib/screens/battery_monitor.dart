@@ -28,6 +28,9 @@ class _BatteryMonitorState extends State<BatteryMonitor> {
   Widget build(BuildContext context) {
 
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Battery Monitor'),
+      ),
       bottomNavigationBar:BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
       backgroundColor: Colors.white,

@@ -35,8 +35,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
 
-      // initialRoute: WelcomeScreen.id
-      initialRoute: ChangePasswordWidget.id,
+      // initialRoute: WelcomeScreen.id 
+      initialRoute: SplashScreen.id,
       routes: {
         settingsPage.id: (context) => settingsPage(),
         RealProfilepageWidget.id: (context) => RealProfilepageWidget(),

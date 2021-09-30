@@ -8,10 +8,10 @@ import 'package:foka_mobile_app/screens/profile_page.dart';
 import 'package:foka_mobile_app/screens/settings_screen.dart';
 import 'package:foka_mobile_app/screens/splash_screen.dart';
 import 'package:foka_mobile_app/screens/ths_monitor_screen.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   // const HomeScreen({Key key}) : super(key: key);
- 
 
   static const String id = 'home_screen';
 
@@ -20,7 +20,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-   int currentValue = 0;
+  int currentValue = 0;
   final screens = [
     HomeScreen.id,
     RealProfilepageWidget.id,
@@ -28,44 +28,45 @@ class _HomeScreenState extends State<HomeScreen> {
     SplashScreen.id
   ];
 
+  int _page = 0;
+  GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar:BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      backgroundColor: Colors.white,
-      selectedItemColor: Colors.blue,
-      unselectedItemColor: Colors.grey,
-      selectedFontSize: 14,
-      unselectedFontSize: 14,
-      currentIndex: currentValue,
-      onTap: (index) {
-      setState(() {
-        currentValue = index;
-      });
-      Navigator.pushNamed(context,screens[index]);
-      },
-      
-      items: [
-      BottomNavigationBarItem(
-        label: 'Home',
-        icon: Icon(Icons.home),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.white,
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.grey,
+        selectedFontSize: 14,
+        unselectedFontSize: 14,
+        currentIndex: currentValue,
+        onTap: (index) {
+          setState(() {
+            currentValue = index;
+          });
+          Navigator.pushNamed(context, screens[index]);
+        },
+        items: [
+          BottomNavigationBarItem(
+            label: 'Home',
+            icon: Icon(Icons.home),
+          ),
+          BottomNavigationBarItem(
+            label: 'Profile',
+            icon: Icon(Icons.person),
+          ),
+          BottomNavigationBarItem(
+            label: 'Settings',
+            icon: Icon(Icons.settings),
+          ),
+          BottomNavigationBarItem(
+            label: 'Log out',
+            icon: Icon(Icons.logout),
+          ),
+        ],
       ),
-      BottomNavigationBarItem(
-        label: 'Profile',
-        icon: Icon(Icons.person),
-      ),
-      BottomNavigationBarItem(
-        label: 'Settings',
-        icon: Icon(Icons.settings),
-      ),
-      BottomNavigationBarItem(
-        label: 'Log out',
-        icon: Icon(Icons.logout),
-      ),
-      ],
-    
-    ),
       backgroundColor: Color(0xFFFDFFD1),
       body: Container(
         child: Padding(
@@ -75,40 +76,53 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Column(
-                      children: [
-                        Text(
-                          'My Boats',
-                          style: TextStyle(
-                            fontSize: 30.0,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.bold,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10.0),
+                      child: Column(
+                        children: [
+                          Text(
+                            'My Boats',
+                            style: TextStyle(
+                              fontSize: 30.0,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        Text(
-                          '5 owned',
-                          style: TextStyle(
-                            fontSize: 15.0,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w300,
+                          Text(
+                            '5 owned',
+                            style: TextStyle(
+                              fontSize: 15.0,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w300,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                    RoundedButton(
-                      title: 'Add Boat',
-                      color: Color(0xFF0DBDEB),
-                      onPressed: () {},
-                    ),
+                    // RoundedButton(
+                    //   title: 'Add Boat',
+                    //   color: Color(0xFF0DBDEB),
+                    //   onPressed: () {},
+                    // ),
                   ],
                 ),
-                BoatWidget('Boat 1', 30.0, 30,(){Navigator.pushNamed(context, DevicesPageWidget.id);}),
-                BoatWidget('Boat 1', 30.0, 30,(){Navigator.pushNamed(context, DevicesPageWidget.id);}),
-                BoatWidget('Boat 1', 30.0, 30,(){Navigator.pushNamed(context, DevicesPageWidget.id);}),
-                BoatWidget('Boat 1', 30.0, 30,(){Navigator.pushNamed(context, DevicesPageWidget.id);}),
-                BoatWidget('Boat 1', 30.0, 30,(){Navigator.pushNamed(context, DevicesPageWidget.id);}),
+                BoatWidget('Boat 1', 30.0, 30, () {
+                  Navigator.pushNamed(context, DevicesPageWidget.id);
+                }),
+                BoatWidget('Boat 1', 30.0, 30, () {
+                  Navigator.pushNamed(context, DevicesPageWidget.id);
+                }),
+                BoatWidget('Boat 1', 30.0, 30, () {
+                  Navigator.pushNamed(context, DevicesPageWidget.id);
+                }),
+                BoatWidget('Boat 1', 30.0, 30, () {
+                  Navigator.pushNamed(context, DevicesPageWidget.id);
+                }),
+                BoatWidget('Boat 1', 30.0, 30, () {
+                  Navigator.pushNamed(context, DevicesPageWidget.id);
+                }),
               ],
             ),
           ),

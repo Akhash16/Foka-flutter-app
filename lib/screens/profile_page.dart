@@ -7,9 +7,10 @@ import 'package:foka_mobile_app/screens/splash_screen.dart';
 import 'package:foka_mobile_app/screens/ths_monitor_screen.dart';
 
 import 'home_screen.dart';
+
 class RealProfilepageWidget extends StatefulWidget {
   static const String id = 'profile_screen';
-  
+
   @override
   _RealProfilepageWidgetState createState() => _RealProfilepageWidgetState();
 }
@@ -23,7 +24,7 @@ class _RealProfilepageWidgetState extends State<RealProfilepageWidget> {
     SplashScreen.id
   ];
   late TextEditingController textController1;
-  bool switchListTileValue =false;
+  bool switchListTileValue = false;
   late TextEditingController textController2;
   late TextEditingController textController3;
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -39,41 +40,39 @@ class _RealProfilepageWidgetState extends State<RealProfilepageWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar:BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      backgroundColor: Colors.white,
-      selectedItemColor: Colors.blue,
-      unselectedItemColor: Colors.grey,
-      selectedFontSize: 14,
-      unselectedFontSize: 14,
-      currentIndex: currentValue,
-      onTap: (index) {
-      setState(() {
-        currentValue = index;
-      });
-      Navigator.pushNamed(context,screens[index]);
-      },
-      
-      items: [
-      BottomNavigationBarItem(
-        label: 'Home',
-        icon: Icon(Icons.home),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.white,
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.grey,
+        selectedFontSize: 14,
+        unselectedFontSize: 14,
+        currentIndex: currentValue,
+        onTap: (index) {
+          setState(() {
+            currentValue = index;
+          });
+          Navigator.pushNamed(context, screens[index]);
+        },
+        items: [
+          BottomNavigationBarItem(
+            label: 'Home',
+            icon: Icon(Icons.home),
+          ),
+          BottomNavigationBarItem(
+            label: 'Profile',
+            icon: Icon(Icons.person),
+          ),
+          BottomNavigationBarItem(
+            label: 'Settings',
+            icon: Icon(Icons.settings),
+          ),
+          BottomNavigationBarItem(
+            label: 'Log out',
+            icon: Icon(Icons.logout),
+          ),
+        ],
       ),
-      BottomNavigationBarItem(
-        label: 'Profile',
-        icon: Icon(Icons.person),
-      ),
-      BottomNavigationBarItem(
-        label: 'Settings',
-        icon: Icon(Icons.settings),
-      ),
-      BottomNavigationBarItem(
-        label: 'Log out',
-        icon: Icon(Icons.logout),
-      ),
-      ],
-    
-    ),
       key: scaffoldKey,
       body: Container(
         width: double.infinity,
@@ -86,7 +85,7 @@ class _RealProfilepageWidgetState extends State<RealProfilepageWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 25, 0, 0),
                 child: SwitchListTile(
                   value: switchListTileValue,
                   onChanged: (newValue) =>
@@ -156,7 +155,8 @@ class _RealProfilepageWidgetState extends State<RealProfilepageWidget> {
                     ),
                     filled: true,
                     fillColor: Colors.white,
-                    contentPadding: EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
+                    contentPadding:
+                        EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
                   ),
                   style: TextStyle(
                     fontFamily: 'Lexend Deca',
@@ -203,7 +203,8 @@ class _RealProfilepageWidgetState extends State<RealProfilepageWidget> {
                     ),
                     filled: true,
                     fillColor: Colors.white,
-                    contentPadding: EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
+                    contentPadding:
+                        EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
                   ),
                   style: TextStyle(
                     fontFamily: 'Lexend Deca',
@@ -250,7 +251,8 @@ class _RealProfilepageWidgetState extends State<RealProfilepageWidget> {
                     ),
                     filled: true,
                     fillColor: Colors.white,
-                    contentPadding: EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
+                    contentPadding:
+                        EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
                   ),
                   style: TextStyle(
                     fontFamily: 'Lexend Deca',
@@ -263,16 +265,25 @@ class _RealProfilepageWidgetState extends State<RealProfilepageWidget> {
               Align(
                 alignment: AlignmentDirectional(0, 0.05),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 100, 0, 0),
-                  child: RectButton(color: Color(0xFF39d2c0),title: 'Change Password',onPressed: (){Navigator.pushNamed(context, ChangePasswordWidget.id);})
-                ),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                    child: RectButton(
+                        color: Color(0xFF39d2c0),
+                        title: 'Change Password',
+                        onPressed: () {
+                          Navigator.pushNamed(context, ChangePasswordWidget.id);
+                        })),
               ),
               Align(
                 alignment: AlignmentDirectional(0, 0.05),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
-                  child: RectButton(color: Color(0xFF39d2c0),title: 'Save Changes',onPressed: (){Navigator.pushNamed(context, SettingsSavedSuccessfully.id);})
-                ),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                    child: RectButton(
+                        color: Color(0xFF39d2c0),
+                        title: 'Save Changes',
+                        onPressed: () {
+                          Navigator.pushNamed(
+                              context, SettingsSavedSuccessfully.id);
+                        })),
               )
             ],
           ),
