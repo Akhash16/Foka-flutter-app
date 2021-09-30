@@ -2,25 +2,26 @@ import 'package:flutter/material.dart';
 
 class Devicewidget extends StatelessWidget {
 
-  Devicewidget({required this.deviceName,required this.deviceImg,required this.direction,required this.deviceControl});
+  Devicewidget({required this.deviceName,required this.deviceImg,required this.direction,required this.deviceControl,required this.color});
 
   final String deviceName;
   final String deviceImg;
   final String direction;
   final VoidCallback deviceControl;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
     return direction == 'left'?Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 15),
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 6, 0, 6),
                   child: GestureDetector(
                     onTap: deviceControl,
                     child: Container(
                       width: 350,
                       height: 150,
                       decoration: BoxDecoration(
-                        color: Color(0xFF0090FF),
-                        borderRadius: BorderRadius.circular(15),
+                        color: color,
+                        borderRadius: BorderRadius.circular(10),
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
@@ -33,6 +34,8 @@ class Devicewidget extends StatelessWidget {
                               style: TextStyle(
                                 fontFamily: 'Poppins',
                                 color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18,
                               ),
                             ),
                           ),
@@ -54,8 +57,8 @@ class Devicewidget extends StatelessWidget {
                       width: 350,
                       height: 150,
                       decoration: BoxDecoration(
-                        color: Color(0xFF0090FF),
-                        borderRadius: BorderRadius.circular(15),
+                        color: color,
+                        borderRadius: BorderRadius.circular(10),
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
@@ -74,6 +77,8 @@ class Devicewidget extends StatelessWidget {
                               style: TextStyle(
                                 fontFamily: 'Poppins',
                                 color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18,
                               ),
                             ),
                           ),

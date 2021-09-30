@@ -34,6 +34,37 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0.5,
+        leading: Icon(Icons.menu, color: Colors.black87),
+        title: Text(
+          "My Boats",
+          style: TextStyle(
+              color: Colors.black, fontFamily: "Poppins", fontSize: 25,fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Colors.white,
+        actions: [
+          Align(
+            child: Text(
+              '5 owned',
+              style: TextStyle(
+                color: Colors.black,
+                fontFamily: "Poppins",
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+          IconButton(
+            icon: Icon(
+              Icons.more_vert,
+              color: Colors.black87,
+              size: 30,
+            ),
+            onPressed: () {},
+          ),
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.white,
@@ -67,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      backgroundColor: Color(0xFFFDFFD1),
+      backgroundColor: Colors.white,
       body: Container(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -78,29 +109,29 @@ class _HomeScreenState extends State<HomeScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
-                      child: Column(
-                        children: [
-                          Text(
-                            'My Boats',
-                            style: TextStyle(
-                              fontSize: 30.0,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            '5 owned',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w300,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.only(top: 10.0),
+                    //   child: Column(
+                    //     children: [
+                    //       Text(
+                    //         'My Boats',
+                    //         style: TextStyle(
+                    //           fontSize: 30.0,
+                    //           fontFamily: 'Poppins',
+                    //           fontWeight: FontWeight.bold,
+                    //         ),
+                    //       ),
+                    //       Text(
+                    //         '5 owned',
+                    //         style: TextStyle(
+                    //           fontSize: 15.0,
+                    //           fontFamily: 'Poppins',
+                    //           fontWeight: FontWeight.w300,
+                    //         ),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
                     // RoundedButton(
                     //   title: 'Add Boat',
                     //   color: Color(0xFF0DBDEB),
@@ -110,19 +141,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 BoatWidget('Boat 1', 30.0, 30, () {
                   Navigator.pushNamed(context, DevicesPageWidget.id);
-                }),
+                },Color(0xFF377DE9)),
                 BoatWidget('Boat 1', 30.0, 30, () {
                   Navigator.pushNamed(context, DevicesPageWidget.id);
-                }),
+                },Color(0xFF566E7A)),
                 BoatWidget('Boat 1', 30.0, 30, () {
                   Navigator.pushNamed(context, DevicesPageWidget.id);
-                }),
+                },Color(0xFF019788),),
                 BoatWidget('Boat 1', 30.0, 30, () {
                   Navigator.pushNamed(context, DevicesPageWidget.id);
-                }),
+                },Color(0xFF863A95),),
                 BoatWidget('Boat 1', 30.0, 30, () {
                   Navigator.pushNamed(context, DevicesPageWidget.id);
-                }),
+                },Color(0xFFFF8B66),),
               ],
             ),
           ),

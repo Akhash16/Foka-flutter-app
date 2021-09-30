@@ -86,7 +86,7 @@ class _FluidMonitorState extends State<FluidMonitor> {
                 children: [
                   CircularStepProgressIndicator(
                     totalSteps: 20,
-                    currentStep: 12,
+                    currentStep: 19,
                     stepSize: 20,
                     selectedColor: Colors.red,
                     unselectedColor: Colors.purple[400],
