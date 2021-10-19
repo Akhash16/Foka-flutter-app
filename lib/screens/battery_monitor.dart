@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:foka_mobile_app/screens/profile_page.dart';
-import 'package:foka_mobile_app/screens/settings_screen.dart';
-import 'package:foka_mobile_app/screens/splash_screen.dart';
-import 'package:step_progress_indicator/step_progress_indicator.dart';
+import 'dart:async';
+import 'package:mqtt_client/mqtt_client.dart';
+import 'package:mqtt_client/mqtt_server_client.dart';
 
-import 'home_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class BatteryMonitor extends StatefulWidget {
   // const BatteryMonitor({Key key}) : super(key: key);
@@ -17,55 +16,116 @@ class BatteryMonitor extends StatefulWidget {
 
 class _BatteryMonitorState extends State<BatteryMonitor> {
 
-  final screens = [
-    HomeScreen.id,
-    RealProfilepageWidget.id,
-    settingsPage.id,
-    SplashScreen.id
-  ];
+  int BatteryPercentage = 80;
+
+  @override
+  void initState() {
+    print('running init');
+    // TODO: implement initState
+    super.initState();
+    Timer timer = Timer.periodic(Duration(seconds: 1), (Timer t) => change());
+    Future<MqttServerClient> connectClient() async {
+      print('connect started');
+      MqttServerClient client =
+      MqttServerClient.withPort('14.99.10.249', 'client-001', 1883);
+      client.logging(on: true);
+      client.onConnected = onConnected;
+      client.onDisconnected = onDisconnected;
+      client.onUnsubscribed = onUnsubscribed;
+      client.onSubscribed = onSubscribed;
+      client.onSubscribeFail = onSubscribeFail;
+      client.pongCallback = pong;
+      client.keepAlivePeriod = 20;
+
+      print('final con');
+      final connMessage = MqttConnectMessage()
+          .authenticateAs('', '')
+      // ignore: deprecated_member_use
+          .withClientIdentifier("client-001")
+          .keepAliveFor(6000)
+          .startClean()
+          .withWillQos(MqttQos.atLeastOnce);
+      client.connectionMessage = connMessage;
+      print('try');
+      try {
+        await client.connect();
+      } catch (e) {
+        print('catch');
+        print('Exception: $e');
+        client.disconnect();
+      }
+
+      print('try done');
+      client.updates!.listen((List<MqttReceivedMessage<MqttMessage>> c) {
+        MqttPublishMessage message = c[0].payload as MqttPublishMessage;
+        final payload =
+        MqttPublishPayload.bytesToStringAsString(message.payload.message);
+
+        print('Received message:$payload from topic: ${c[0].topic}>');
+
+        BatteryPercentage = int.parse(payload);
+        print("message_received : $BatteryPercentage");
+      });
+
+      client.subscribe("REC", MqttQos.atLeastOnce);
+
+      return client;
+    }
+
+    void start() async {
+      await connectClient();
+    }
+
+    start();
+  }
+  // connection succeeded
+  void onConnected() {
+    print('Connected');
+  }
+
+// unconnected
+  void onDisconnected() {
+    print('Disconnected');
+  }
+
+// subscribe to topic succeeded
+  void onSubscribed(String topic) {
+    print('Subscribed topic: $topic');
+  }
+
+// subscribe to topic failed
+  void onSubscribeFail(String topic) {
+    print('Failed to subscribe $topic');
+  }
+
+// unsubscribe succeeded
+  void onUnsubscribed(String? topic) {
+    print('Unsubscribed topic: $topic');
+  }
+
+// PING response received
+  void pong() {
+    print('Ping response client callback invoked');
+  }
+
+  void change() {
+    if (BatteryPercentage > 100){
+      BatteryPercentage = 100;
+    }
+    else if(BatteryPercentage < 0){
+      BatteryPercentage = 0;
+    }
+    setState(() {
+      BatteryPercentage = BatteryPercentage;
+    });
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Battery Monitor'),
-      ),
-      bottomNavigationBar:BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      backgroundColor: Colors.white,
-      selectedItemColor: Colors.grey,
-      unselectedItemColor: Colors.grey,
-      selectedFontSize: 14,
-      unselectedFontSize: 14,
-      // currentIndex: currentValue,
-      onTap: (index) {
-      // setState(() {
-      //   currentValue = index;
-      // });
-      Navigator.pushNamed(context,screens[index]);
-      },
-      
-      items: [
-      BottomNavigationBarItem(
-        label: 'Home',
-        icon: Icon(Icons.home),
-      ),
-      BottomNavigationBarItem(
-        label: 'Profile',
-        icon: Icon(Icons.person),
-      ),
-      BottomNavigationBarItem(
-        label: 'Settings',
-        icon: Icon(Icons.settings),
-      ),
-      BottomNavigationBarItem(
-        label: 'Log out',
-        icon: Icon(Icons.logout),
-      ),
-      ],
-    
-    ),
 
       backgroundColor: Color(0xFFF6F6C1),
       body: SafeArea(
@@ -80,10 +140,10 @@ class _BatteryMonitorState extends State<BatteryMonitor> {
                 children: [
                   CircularStepProgressIndicator(
                     totalSteps: 100,
-                    currentStep: 74,
+                    currentStep: BatteryPercentage,
                     stepSize: 10,
                     selectedColor: Colors.greenAccent,
-                    unselectedColor: Colors.grey[200],
+                    unselectedColor: Colors.grey[400],
                     padding: 0,
                     width: 250,
                     height: 250,
@@ -91,7 +151,7 @@ class _BatteryMonitorState extends State<BatteryMonitor> {
                     roundedCap: (_, __) => true,
                   ),
                   Text(
-                    '74%',
+                    '$BatteryPercentage%',
                     style: TextStyle(
                       fontSize: 40.0,
                       fontWeight: FontWeight.bold,

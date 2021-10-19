@@ -1,11 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:foka_mobile_app/screens/profile_page.dart';
-import 'package:foka_mobile_app/screens/settings_screen.dart';
-import 'package:foka_mobile_app/screens/splash_screen.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
-
-import 'home_screen.dart';
 
 class FluidMonitor extends StatefulWidget {
   // const FluidMonitor({Key key}) : super(key: key);
@@ -17,54 +12,17 @@ class FluidMonitor extends StatefulWidget {
 }
 
 class _FluidMonitorState extends State<FluidMonitor> {
-  final screens = [
-    HomeScreen.id,
-    RealProfilepageWidget.id,
-    settingsPage.id,
-    SplashScreen.id
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.white,
-        selectedItemColor: Colors.grey,
-        unselectedItemColor: Colors.grey,
-        selectedFontSize: 14,
-        unselectedFontSize: 14,
-        // currentIndex: currentValue,
-        onTap: (index) {
-          // setState(() {
-          //   currentValue = index;
-          // });
-          Navigator.pushNamed(context, screens[index]);
-        },
-
-        items: [
-          BottomNavigationBarItem(
-            label: 'Home',
-            icon: Icon(Icons.home),
-          ),
-          BottomNavigationBarItem(
-            label: 'Profile',
-            icon: Icon(Icons.person),
-          ),
-          BottomNavigationBarItem(
-            label: 'Settings',
-            icon: Icon(Icons.settings),
-          ),
-          BottomNavigationBarItem(
-            label: 'Log out',
-            icon: Icon(Icons.logout),
-          ),
-        ],
-      ),
       appBar: AppBar(
         title: Text(
           'Fluid Monitor',
+          style: TextStyle(
+            color: Colors.blueGrey,
+          ),
         ),
+        backgroundColor: Colors.amberAccent,
       ),
       backgroundColor: Color(0xFFFDFFD1),
       body: Column(
@@ -86,7 +44,7 @@ class _FluidMonitorState extends State<FluidMonitor> {
                 children: [
                   CircularStepProgressIndicator(
                     totalSteps: 20,
-                    currentStep: 19,
+                    currentStep: 12,
                     stepSize: 20,
                     selectedColor: Colors.red,
                     unselectedColor: Colors.purple[400],

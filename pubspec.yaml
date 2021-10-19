@@ -31,11 +31,14 @@ dependencies:
   dotted_border:
   animated_text_kit: ^4.2.1
   google_fonts: ^2.1.0
-  firebase_auth: 
-  firebase_core: 
+  firebase_auth: ^3.1.1
+  firebase_core: ^1.6.0
   font_awesome_flutter: ^9.1.0
   step_progress_indicator: ^1.0.1
-  curved_navigation_bar: ^1.0.1
+  mqtt_client: ^9.6.1
+
+
+
 
 dev_dependencies:
   flutter_test:
